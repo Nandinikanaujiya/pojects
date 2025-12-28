@@ -1,4 +1,4 @@
-#include <stdio.h>      ]1
+#include <stdio.h>
 
 struct Contact {
     char name[50];
@@ -16,7 +16,7 @@ int main() {
     int choice;
 
     do {
-        printf("\n--- Contact Management System ---\n");
+        printf("\n--- Contact Management System \n");
         printf("1. Add Contact\n");
         printf("2. Display All Contacts\n");
         printf("3. Search Contact\n");
@@ -40,8 +40,8 @@ int main() {
 
 /* Add a new contact */
 void addContact() {
-    struct Contact c;
-    FILE *fp = fopen("contacts.dat", "ab");
+    struct Contact c;//contact variable
+    FILE *fp = fopen("contacts.dat", "ab");//ab append binary mode
 
     if (fp == NULL) {
         printf("File error!\n");
@@ -55,14 +55,15 @@ void addContact() {
     printf("Enter email: ");
     scanf(" %[^\n]", c.email);
 
-    fwrite(&c, sizeof(c), 1, fp);
+    fwrite(&c, sizeof(c), 1, fp);//c struct ka address
+    
     fclose(fp);
 
     printf("Contact added successfully!\n");
 }
 
-/* Display all contacts */
-void displayContacts() {
+/* show all contacts */
+void showContacts() {
     struct Contact c;
     FILE *fp = fopen("contacts.dat", "rb");
 
